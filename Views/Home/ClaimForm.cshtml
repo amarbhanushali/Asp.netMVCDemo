@@ -1,0 +1,117 @@
+﻿@model CashBack.ViewModels.ClaimsFormViewModel
+@{
+    ViewBag.Title = "Add Claim"; <!--Title Of page-->
+}
+
+<div class="form_container container">
+    @using (Html.BeginForm("save", "Home", FormMethod.Post, new { @class = "login100-form flex-sb flex-w", role = "form" }))
+    {
+        @Html.AntiForgeryToken() <!--Define the Token Key Validation-->
+        @Html.ValidationSummary(true, "Please check bellow errors")<!--Define the Validation Message of summery-->
+        <div class="row claim100-form">
+            <div class="form-group col-12 col-md-6">
+                <fieldset class="the-fieldset">
+                    <legend class="the-legend">Pro Partner information</legend>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.DropDownListFor(m => m.ClaimModel.TypesOfFormId, new SelectList(Model.TypesOfForms, "Id", "type"), "Select Form Type", new { @class = "custom-select input100" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.TypesOfFormId)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.CompanyName, new { @class = "input100", @placeholder = "Company Name" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.CompanyName)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.OrderDate, "{0:d MMM yyyy}", new { @class = "input100 datepicker", @placeholder = "Order Date" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.OrderDate)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.InstalltionDateType, "{0:d MMM yyyy}", new { @class = "input100 datepicker", @placeholder = "Installation Date" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.InstalltionDateType)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.PaymentDate, "{0:d MMM yyyy}", new { @class = "input100 datepicker", @placeholder = "Payment Date" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.PaymentDate)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.InputeDate, "{0:d MMM yyyy}", new { @class = "input100 datepicker", @placeholder = "Input Date" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.InputeDate)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.PartnerRefNo, new { @class = "input100", @placeholder = "Pro Partner Ref No." })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.PartnerRefNo)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.DropDownListFor(m => m.ClaimModel.TypeOfClaimId, new SelectList(Model.TyeOfClaims, "Id", "claimType"), "Select Claim Type", new { @class = "custom-select input100" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.TypesOfFormId)
+                        <span class="focus-input100"></span>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="form-group col-12 col-md-6">
+                <fieldset class="the-fieldset">
+                    <legend class="the-legend">Project Owner information</legend>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.FirstName, new { @class = "input100", @placeholder = "First Name" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.FirstName)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.LastName, new { @class = "input100", @placeholder = "Last Name" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.LastName)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.Address1, new { @class = "input100", @placeholder = "Address 1" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.Address1)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.Address2, new { @class = "input100", @placeholder = "Address 2" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.Address2)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.City, new { @class = "input100", @placeholder = "City" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.City)
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.Country, new { @class = "input100", @placeholder = "Country" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.Country)
+                            
+                        <span class="focus-input100"></span>
+                    </div> 
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.PhoneNumber, new { @class = "input100", @placeholder = "Phone Number" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.PhoneNumber)
+                            
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="input-group wrap-input100 validate-input m-b-16">
+                        @Html.TextBoxFor(m => m.ClaimModel.Email, new { @class = "input100", @placeholder = "abc@abc.com" })
+                        @Html.ValidationMessageFor(m => m.ClaimModel.Email)
+                            
+                        <span class="focus-input100"></span>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="form-group col-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-dark">Submit Data</button>
+            </div>
+        </div>
+
+    }
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
